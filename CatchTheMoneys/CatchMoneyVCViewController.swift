@@ -15,7 +15,7 @@ class CatchMoneyVCViewController: UIViewController {
     var hideTimer = Timer()
     var highestCaughtMoneys = 0
     var moneyArr = [UIImageView]()
-    
+    var counter = 0
     
     
     // labels
@@ -114,6 +114,14 @@ class CatchMoneyVCViewController: UIViewController {
         ]
         
         
+        // TIMERS
+        counter = 12
+        timeLabel.text = String(counter)
+        
+        timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(timerCount), userInfo: nil, repeats: true)
+        
+        hideTimer = Timer.scheduledTimer(timeInterval: 0.4, target: self, selector : #selector(hideMoneyImages), userInfo: nil, repeats: true)
+        
         
         
     }
@@ -132,10 +140,55 @@ class CatchMoneyVCViewController: UIViewController {
     }
         
 
-  // add 100
+    // add 100
     @objc func addHundredMoney() {
         sumCaughtMoneys += 100
         moneyCaughtLabel.text = "Sum Moneys : \(sumCaughtMoneys)"
     }
+    
+    
+    // Random Money visible
+    @objc func hideMoneyImages(){
+        
+        for item in moneyArr {
+            item.isHidden = true
+        }
+        
+        
+        // Select random money
+        let randomMoney = Int(arc4random_uniform(UInt32(moneyArr.count - 1)))
+        moneyArr[randomMoney].isHidden = false
+        
+    }
+    
+    
+    
+    // Timer func
+    @objc func timerCount() {
+        counter -= 1
+        timeLabel.text = String(counter)
+        
+        
+        if counter == 0 {
+            timer.invalidate()
+            hideTimer.invalidate()
+            
+            
+            
+            for mon in moneyArr {
+                mon.isHidden = true // Tüm ImageView'lar kapalı, yukarda counter -> 0
+            }
+            
+            
+            
+        }
+        
+        
+        
+        
+        
+    }
+    
+    
 
 }
