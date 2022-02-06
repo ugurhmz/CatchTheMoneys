@@ -13,6 +13,7 @@
 		63D1088C27B028DD005C28B0 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 63D1088A27B028DD005C28B0 /* Main.storyboard */; };
 		63D1088E27B028DE005C28B0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 63D1088D27B028DE005C28B0 /* Assets.xcassets */; };
 		63D1089127B028DE005C28B0 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 63D1088F27B028DE005C28B0 /* LaunchScreen.storyboard */; };
+		63D1089927B06376005C28B0 /* CatchMoneyVCViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63D1089827B06376005C28B0 /* CatchMoneyVCViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +25,7 @@
 		63D1088D27B028DE005C28B0 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		63D1089027B028DE005C28B0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		63D1089227B028DE005C28B0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		63D1089827B06376005C28B0 /* CatchMoneyVCViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatchMoneyVCViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -63,6 +65,7 @@
 				63D1088D27B028DE005C28B0 /* Assets.xcassets */,
 				63D1088F27B028DE005C28B0 /* LaunchScreen.storyboard */,
 				63D1089227B028DE005C28B0 /* Info.plist */,
+				63D1089827B06376005C28B0 /* CatchMoneyVCViewController.swift */,
 			);
 			path = CatchTheMoneys;
 			sourceTree = "<group>";
@@ -138,6 +141,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				63D1089927B06376005C28B0 /* CatchMoneyVCViewController.swift in Sources */,
 				63D1088927B028DD005C28B0 /* ViewController.swift in Sources */,
 				63D1088527B028DD005C28B0 /* AppDelegate.swift in Sources */,
 				63D1088727B028DD005C28B0 /* SceneDelegate.swift in Sources */,
