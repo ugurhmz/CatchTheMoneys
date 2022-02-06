@@ -14,6 +14,7 @@ class CatchMoneyVCViewController: UIViewController {
     var sumCaughtMoneys = 0
     var hideTimer = Timer()
     var highestCaughtMoneys = 0
+    var moneyArr = [UIImageView]()
     
     
     
@@ -77,12 +78,40 @@ class CatchMoneyVCViewController: UIViewController {
         
         
         let recognizerTen1 = UITapGestureRecognizer(target: self, action : #selector(addTenMoney))
-        
         let recognizerFive1 = UITapGestureRecognizer(target: self, action : #selector(addFiveMoney))
-        
         let recognizerHunred1 = UITapGestureRecognizer(target: self, action : #selector(addHundredMoney))
         
+
+        let recognizerTen2 = UITapGestureRecognizer(target: self, action : #selector(addTenMoney))
+        let recognizerFive2 = UITapGestureRecognizer(target: self, action : #selector(addFiveMoney))
+        let recognizerHunred2 = UITapGestureRecognizer(target: self, action : #selector(addHundredMoney))
         
+        let recognizerTen3 = UITapGestureRecognizer(target: self, action : #selector(addTenMoney))
+        let recognizerFive3 = UITapGestureRecognizer(target: self, action : #selector(addFiveMoney))
+        let recognizerHunred3 = UITapGestureRecognizer(target: self, action : #selector(addHundredMoney))
+        
+        
+        // 1.row gesture
+        ten1Dollars.addGestureRecognizer(recognizerTen1)
+        five1Dollars.addGestureRecognizer(recognizerFive1)
+        hundred1Dollars.addGestureRecognizer(recognizerHunred1)
+        
+        // 2.row gesture
+        ten2Dollars.addGestureRecognizer(recognizerTen2)
+        five2Dollars.addGestureRecognizer(recognizerFive2)
+        hundred2Dollars.addGestureRecognizer(recognizerHunred2)
+        
+        // 3.row gesture
+        ten3Dollars.addGestureRecognizer(recognizerTen3)
+        five3Dollars.addGestureRecognizer(recognizerFive3)
+        hundred3Dollars.addGestureRecognizer(recognizerHunred3)
+        
+        
+        // money array
+        moneyArr = [ten1Dollars, five1Dollars, hundred1Dollars,
+                    ten2Dollars, five2Dollars, hundred2Dollars,
+                    ten3Dollars, five3Dollars, hundred3Dollars,
+        ]
         
         
         
@@ -105,7 +134,7 @@ class CatchMoneyVCViewController: UIViewController {
 
   // add 100
     @objc func addHundredMoney() {
-        sumCaughtMoneys += 5
+        sumCaughtMoneys += 100
         moneyCaughtLabel.text = "Sum Moneys : \(sumCaughtMoneys)"
     }
 
