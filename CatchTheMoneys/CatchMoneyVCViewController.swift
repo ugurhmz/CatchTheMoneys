@@ -91,20 +91,24 @@ class CatchMoneyVCViewController: UIViewController {
         let recognizerHunred3 = UITapGestureRecognizer(target: self, action : #selector(addHundredMoney))
         
         
+        
         // 1.row gesture
         ten1Dollars.addGestureRecognizer(recognizerTen1)
         five1Dollars.addGestureRecognizer(recognizerFive1)
         hundred1Dollars.addGestureRecognizer(recognizerHunred1)
+        
         
         // 2.row gesture
         ten2Dollars.addGestureRecognizer(recognizerTen2)
         five2Dollars.addGestureRecognizer(recognizerFive2)
         hundred2Dollars.addGestureRecognizer(recognizerHunred2)
         
+        
         // 3.row gesture
         ten3Dollars.addGestureRecognizer(recognizerTen3)
         five3Dollars.addGestureRecognizer(recognizerFive3)
         hundred3Dollars.addGestureRecognizer(recognizerHunred3)
+        
         
         
         // money array
@@ -114,17 +118,29 @@ class CatchMoneyVCViewController: UIViewController {
         ]
         
         
+        
         // TIMERS
-        counter = 12
+        counter = 10
         timeLabel.text = String(counter)
         
-        timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(timerCount), userInfo: nil, repeats: true)
+        timer = Timer.scheduledTimer(timeInterval: 1,
+                                     target: self,
+                                     selector: #selector(timerCount),
+                                     userInfo: nil,
+                                     repeats: true)
         
-        hideTimer = Timer.scheduledTimer(timeInterval: 0.4, target: self, selector : #selector(hideMoneyImages), userInfo: nil, repeats: true)
+        
+        hideTimer = Timer.scheduledTimer(timeInterval: 0.4,
+                                         target: self,
+                                         selector : #selector(hideMoneyImages),
+                                         userInfo: nil, repeats: true)
         
         
+        hideMoneyImages()
         
     }
+    
+    
     
     // add 10
     @objc func addTenMoney() {
@@ -132,19 +148,24 @@ class CatchMoneyVCViewController: UIViewController {
         self.moneyCaughtLabel.text = "Sum Moneys : \(sumCaughtMoneys)"
     }
     
-                                                       
+            
+    
     // add 5
     @objc func addFiveMoney() {
         sumCaughtMoneys += 5
         moneyCaughtLabel.text = "Sum Moneys : \(sumCaughtMoneys)"
     }
-        
+       
+    
+    
 
     // add 100
     @objc func addHundredMoney() {
         sumCaughtMoneys += 100
         moneyCaughtLabel.text = "Sum Moneys : \(sumCaughtMoneys)"
     }
+    
+    
     
     
     // Random Money visible
@@ -160,6 +181,8 @@ class CatchMoneyVCViewController: UIViewController {
         moneyArr[randomMoney].isHidden = false
         
     }
+    
+    
     
     
     
@@ -181,12 +204,57 @@ class CatchMoneyVCViewController: UIViewController {
             
             
             
+            // sum caught money check
+            if self.sumCaughtMoneys > self.highestCaughtMoneys {
+                self.highestCaughtMoneys = self.sumCaughtMoneys
+                highestMoneyLabel.text = "CaughtHighest Money : \(self.highestCaughtMoneys)"
+                UserDefaults.standard.set(self.highestCaughtMoneys, forKey: "highestMoneys")
+            }
+            
+            
+            // Alert
+            let alert = UIAlertController(title: "Times Up!",
+                                          message: "play Again ? ",
+                                          preferredStyle: UIAlertController.Style.alert)
+            
+            
+            let noBtn = UIAlertAction(title: "No",
+                                       style: UIAlertAction.Style.cancel, handler: nil)
+            
+            
+            let againBtn = UIAlertAction(title: "Again",
+                                         style: UIAlertAction.Style.default) { (UIAlertAction) in
+                
+                
+                self.sumCaughtMoneys = 0
+                self.moneyCaughtLabel.text = "Sum Moneys : \(self.sumCaughtMoneys)"
+                self.counter = 10
+                
+                self.timeLabel.text = String(self.counter)
+                
+                
+                self.timer = Timer.scheduledTimer(timeInterval: 1,
+                                                  target: self,
+                                                  selector: #selector(self.timerCount),
+                                                  userInfo: nil,
+                                                  repeats: true)
+                
+                
+                
+                self.hideTimer = Timer.scheduledTimer(timeInterval: 0.4,
+                                                      target: self,
+                                                      selector: #selector(self.hideMoneyImages),
+                                                      userInfo: nil, repeats: true)
+                
+                
+            }
+            
+            alert.addAction(noBtn)
+            alert.addAction(againBtn)
+            self.present(alert, animated: true, completion: nil)
+            
+            
         }
-        
-        
-        
-        
-        
     }
     
     
